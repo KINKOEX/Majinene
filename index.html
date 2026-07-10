@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>麻糬捏捏</title>
+    <meta name="description" content="可以用滑鼠或手指捏臉頰的麻糬果凍互動頭像。" />
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero-card" aria-label="麻糬捏捏 Demo">
+        <div class="title-row">
+          <div>
+            <p class="eyebrow">Mochi Jelly Toy</p>
+            <h1>麻糬捏捏</h1>
+          </div>
+          <span class="badge">Mouse / Touch</span>
+        </div>
+
+        <div class="stage-wrap" id="stageWrap">
+          <canvas id="jellyCanvas" aria-label="可以拖曳臉頰的麻糬果凍頭像"></canvas>
+          <div class="stage-hint">拉臉頰看看，也可以點畫板空白處</div>
+        </div>
+
+        <div class="controls" aria-label="果凍效果調整">
+          <label>
+            <span>彈性</span>
+            <input id="springControl" type="range" min="0.055" max="0.22" step="0.005" value="0.13" />
+          </label>
+          <label>
+            <span>Q 彈程度</span>
+            <input id="dampingControl" type="range" min="0.72" max="0.94" step="0.01" value="0.84" />
+          </label>
+          <label>
+            <span>最大拉伸</span>
+            <input id="pullControl" type="range" min="30" max="125" step="1" value="78" />
+          </label>
+        </div>
+
+        <p class="description">
+          電腦可以用滑鼠拉臉頰，手機可以用手指拉，最多支援兩指同時拉左右臉頰。沒有碰到麻糬時，麻糬會微微朝滑鼠或點擊方向偏過去。
+        </p>
+      </section>
+    </main>
+
+    <script src="./src/main.js" defer></script>
+  </body>
+</html>
