@@ -1,0 +1,222 @@
+:root {
+  font-family: ui-rounded, "SF Pro Rounded", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Noto Sans TC", sans-serif;
+  color: #342142;
+  background: #fff4fb;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 18% 14%, rgba(188, 142, 255, 0.5), transparent 30rem),
+    radial-gradient(circle at 82% 18%, rgba(255, 185, 224, 0.68), transparent 30rem),
+    radial-gradient(circle at 50% 100%, rgba(255, 222, 238, 0.9), transparent 38rem),
+    linear-gradient(135deg, #fff9fd, #f7edff 45%, #fff4f8);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app-shell {
+  width: min(100%, 980px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: clamp(16px, 4vw, 44px);
+  display: grid;
+  place-items: center;
+}
+
+.hero-card {
+  width: min(100%, 760px);
+  padding: clamp(16px, 3.8vw, 30px);
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.42);
+  box-shadow: 0 24px 76px rgba(84, 33, 120, 0.14);
+  backdrop-filter: blur(18px);
+}
+
+.title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: #8c68a8;
+  font-weight: 850;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  color: #321747;
+  font-size: clamp(2.35rem, 6vw, 4rem);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+}
+
+.badge {
+  flex: 0 0 auto;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(240, 221, 255, 0.92);
+  color: #63407e;
+  font-size: 0.85rem;
+  font-weight: 850;
+  box-shadow: inset 0 0 0 1px rgba(109, 62, 150, 0.08);
+}
+
+.stage-wrap {
+  position: relative;
+  min-height: clamp(390px, 70vw, 590px);
+  border-radius: 30px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(255, 255, 255, 0.54), transparent 17rem),
+    radial-gradient(circle at 50% 96%, rgba(187, 143, 255, 0.28), transparent 25rem),
+    linear-gradient(180deg, rgba(255, 245, 252, 0.5), rgba(255, 239, 250, 0.38));
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.stage-wrap::before,
+.stage-wrap::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.42);
+  filter: blur(18px);
+  pointer-events: none;
+}
+
+.stage-wrap::before {
+  width: 180px;
+  height: 180px;
+  top: 14px;
+  left: 8%;
+}
+
+.stage-wrap::after {
+  width: 230px;
+  height: 230px;
+  right: 7%;
+  bottom: 8%;
+  background: rgba(216, 187, 255, 0.38);
+}
+
+#jellyCanvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+  cursor: grab;
+}
+
+.stage-wrap.is-dragging #jellyCanvas {
+  cursor: grabbing;
+}
+
+.stage-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  z-index: 2;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100% - 32px);
+  padding: 9px 13px;
+  border-radius: 999px;
+  color: #79528e;
+  background: rgba(255, 255, 255, 0.62);
+  font-size: 0.84rem;
+  font-weight: 800;
+  pointer-events: none;
+  box-shadow: 0 12px 28px rgba(91, 41, 130, 0.12);
+  animation: hintFloat 2.8s ease-in-out infinite;
+}
+
+@keyframes hintFloat {
+  0%, 100% { opacity: 0.68; transform: translate(-50%, 0); }
+  50% { opacity: 1; transform: translate(-50%, -6px); }
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.controls label {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.48);
+  box-shadow: inset 0 0 0 1px rgba(103, 58, 139, 0.08);
+}
+
+.controls span {
+  color: #64477d;
+  font-size: 0.84rem;
+  font-weight: 850;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: #985cf5;
+}
+
+.description {
+  margin: 16px 0 0;
+  color: #684f76;
+  line-height: 1.75;
+  font-weight: 650;
+}
+
+@media (max-width: 720px) {
+  .title-row {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .stage-wrap {
+    min-height: min(78vh, 560px);
+  }
+
+  .controls {
+    grid-template-columns: 1fr;
+  }
+
+  .stage-hint {
+    font-size: 0.78rem;
+  }
+}
+
+.stage-wrap.has-interacted .stage-hint {
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
